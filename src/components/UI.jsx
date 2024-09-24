@@ -127,7 +127,7 @@ export const UI = () => {
             </h2>
             <h2 className="shrink-0 text-white text-13xl font-bold">book</h2>
             <h2 className="shrink-0 text-transparent text-13xl font-bold outline-text italic">
-              Slider
+              Sliders
             </h2>
           </div>
         </div>
