@@ -53,7 +53,7 @@ export const UI = () => {
         <a className="pointer-events-auto mt-10 ml-10"
         //href="https://lessons.wawasensei.dev/courses/react-three-fiber" //change to insert link
         >
-          <img className="w-20" src="/images/wawasensei-white.png" />
+         <img className="w-20" src="/images/wawasensei-white.png" />
         </a>
         <div className="w-full overflow-auto pointer-events-auto flex justify-center">
           <div className="overflow-auto flex items-center gap-4 max-w-full p-10">
@@ -92,42 +92,42 @@ export const UI = () => {
         <div className="relative">
           <div className="bg-white/0 animate-horizontal-scroll flex items-center gap-8 w-max px-8">
             <h1 className="shrink-0 text-white text-10xl font-black">
-              Bepo's
+              Happy
             </h1>
             <h2 className="shrink-0 text-white text-8xl italic font-light">
-              animated
+              Birthday
             </h2>
-            <h2 className="shrink-0 text-white text-12xl font-bold">book</h2>
+            <h2 className="shrink-0 text-white text-12xl font-bold">Ishaa</h2>
             <h2 className="shrink-0 text-transparent text-12xl font-bold italic outline-text">
-              Slider
+              :3
             </h2>
-            <h2 className="shrink-0 text-white text-9xl font-medium">Bepo's</h2>
+            <h2 className="shrink-0 text-white text-9xl font-medium">I</h2>
             <h2 className="shrink-0 text-white text-9xl font-extralight italic">
-              animated
+              LOVE
             </h2>
-            <h2 className="shrink-0 text-white text-13xl font-bold">book</h2>
+            <h2 className="shrink-0 text-white text-13xl font-bold">You</h2>
             <h2 className="shrink-0 text-transparent text-13xl font-bold outline-text italic">
-              Slider
+              Sooooooooooooooo Muchhhhhhhhh
             </h2>
           </div>
           <div className="absolute top-0 left-0 bg-white/0 animate-horizontal-scroll-2 flex items-center gap-8 px-8 w-max">
             <h1 className="shrink-0 text-white text-10xl font-black">
-              Bepo's
+              Happy
             </h1>
             <h2 className="shrink-0 text-white text-8xl italic font-light">
-              animated
+              Birthday
             </h2>
-            <h2 className="shrink-0 text-white text-12xl font-bold">book</h2>
+            <h2 className="shrink-0 text-white text-12xl font-bold">Ishaa</h2>
             <h2 className="shrink-0 text-transparent text-12xl font-bold italic outline-text">
-              Slider
+              I
             </h2>
-            <h2 className="shrink-0 text-white text-9xl font-medium">Bepo's</h2>
+            <h2 className="shrink-0 text-white text-9xl font-medium">Love</h2>
             <h2 className="shrink-0 text-white text-9xl font-extralight italic">
-              animated
+              You
             </h2>
-            <h2 className="shrink-0 text-white text-13xl font-bold">book</h2>
+            <h2 className="shrink-0 text-white text-13xl font-bold">sooooooooooooooo</h2>
             <h2 className="shrink-0 text-transparent text-13xl font-bold outline-text italic">
-              Slider
+              Muchhhhhhhhhhh
             </h2>
           </div>
         </div>
