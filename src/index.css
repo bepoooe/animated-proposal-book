@@ -6,11 +6,16 @@
 #root {
   width: 100vw;
   height: 100vh;
-  background: radial-gradient(#70ccf7, #232323 80%);
+  background: 
+    linear-gradient(rgba(112, 204, 247, 0.5), rgba(35, 35, 35, 0.8)), 
+    url('C:\Users\Lenovo\OneDrive\Documents\E drive\animated-proposal-book\public\textures\background-image.png');
+  background-size: cover;
+  background-position: center;
 }
 
 body {
   margin: 0;
+  font-family: 'Poppins', sans-serif;
 }
 
 .outline-text {
