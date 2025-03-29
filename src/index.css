@@ -9,7 +9,7 @@
   height: 100vh;
   background: 
     linear-gradient(rgba(112, 204, 247, 0.5), rgba(35, 35, 35, 0.8)), 
-    url('C:\Users\Lenovo\OneDrive\Documents\E drive\animated-proposal-book\public\background-image.jpg');
+    url('/background-image.jpg');
   background-size: cover;
   background-position: center;
 }
