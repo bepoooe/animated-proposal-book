@@ -1,1 +1,1 @@
-# bepo's animated-proposal-book
+# bepo's animated book slider
