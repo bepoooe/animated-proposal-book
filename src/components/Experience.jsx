@@ -1,5 +1,7 @@
 import { Environment, Float, OrbitControls } from "@react-three/drei";
 import { Book } from "./Book";
+import { Particles } from "./Particles";
+
 export const Experience = () => {
   return (
     <>
@@ -11,6 +13,7 @@ export const Experience = () => {
       >
         <Book />
       </Float>
+      <Particles count={2000} />
       <OrbitControls />
       <Environment preset="studio"></Environment>
       <directionalLight
