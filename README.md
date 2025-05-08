@@ -17,13 +17,18 @@ A 3D interactive memory book built with React and Three.js. This project feature
 
 ## Features
 
-- Interactive 3D book with realistic page-turning animations
+- Interactive 3D book with realistic page-turning animations 
 - Photo gallery presentation with a sleek UI
 - Audio integration:
   - Page-flip sound effects
   - Background music player
 - Animated text display for special messages
-- Particle effects system
+- Dynamic particle effects system:
+  - Firefly-like glowing particles
+  - Organic movement patterns
+  - Radial gradient-based particle textures
+  - Adaptive particle boundaries
+  - Additive blending for enhanced visual effect
 - Custom environment lighting and shadows
 - Responsive and mobile-friendly design
 - Smooth transitions and animations
