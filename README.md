@@ -1,6 +1,6 @@
 # Animated Memory Book
 
-A 3D interactive memory book built with React and Three.js. This project features an animated book interface that allows users to flip through pages of photographs with smooth animations and transitions.
+A 3D interactive memory book built with React and Three.js. This project features an animated book interface that allows users to flip through pages of photographs with smooth animations and transitions, complete with ambient music and page-turning sound effects.
 
 ## Tech Stack
 
@@ -11,15 +11,23 @@ A 3D interactive memory book built with React and Three.js. This project feature
 - **Tailwind CSS** - Utility-first CSS framework for styling
 - **Jotai** - Primitive and flexible state management for React
 - **Vite** - Next generation frontend tooling
+- **Maath** - Math helpers for 3D animations
+- **Three-stdlib** - Three.js standard library
+- **Leva** - Debug GUI for React Three Fiber
 
 ## Features
 
-- Interactive 3D book with page-turning animations
+- Interactive 3D book with realistic page-turning animations
 - Photo gallery presentation with a sleek UI
-- Page-flip sound effects
-- Responsive design
-- Smooth transitions and animations
+- Audio integration:
+  - Page-flip sound effects
+  - Background music player
+- Animated text display for special messages
+- Particle effects system
 - Custom environment lighting and shadows
+- Responsive and mobile-friendly design
+- Smooth transitions and animations
+- Touch-friendly controls
 
 ## Development
 
@@ -69,6 +77,31 @@ yarn preview
 ## Project Structure
 
 - `/src` - Source code
-  - `/components` - React components including the 3D book
-  - `/assets` - Static assets including images
-- `/public` - Static files including photos and audio
+  - `/components` - React components
+    - `Book.jsx` - 3D book component
+    - `Experience.jsx` - Main 3D scene setup
+    - `MusicPlayer.jsx` - Audio controls
+    - `Particles.jsx` - Background particle effects
+    - `UI.jsx` - User interface elements
+  - `/assets` - Static assets
+- `/public` - Static files
+  - `/audios` - Sound effects and music
+  - `/images` - Images and logos
+  - `/textures` - Book textures and photographs
+
+## Assets Required
+
+- Photos for book pages (JPG format)
+- Book cover and back textures
+- Audio files:
+  - Page flip sound effect
+  - Background music
+- Background images and textures
+
+## Latest Version
+
+Current Version: 1.0.0
+
+## License
+
+This project is private and not intended for redistribution.
