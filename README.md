@@ -40,7 +40,7 @@ A 3D interactive memory book built with React and Three.js. This project feature
 
 ```bash
 # Clone the repository
-git clone [repository-url]
+git clone https://github.com/yourusername/animated-proposal-book.git
 
 # Navigate to the project directory
 cd animated-proposal-book
