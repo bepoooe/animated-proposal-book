@@ -96,7 +96,7 @@ yarn preview
 
 ## Assets Required
 
-- Photos for book pages (JPG format)
+- Photos for book pages 
 - Book cover and back textures
 - Audio files:
   - Page flip sound effect
