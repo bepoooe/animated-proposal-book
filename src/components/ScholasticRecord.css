@@ -1,0 +1,55 @@
+/* Custom styles for the zigzag timeline */
+
+/* Make sure the line is centered */
+.vertical-timeline::before {
+  left: 50%;
+  margin-left: -2px;
+}
+
+/* Add more separation between cards */
+.vertical-timeline {
+  width: 95%;
+  max-width: 1200px;
+}
+
+/* Style for cards on left */
+.left-card {
+  transform-origin: right center;
+}
+
+/* Style for cards on right */
+.right-card {
+  transform-origin: left center;
+}
+
+/* Make the content arrows visible on both sides */
+.vertical-timeline-element-content-arrow {
+  top: 24px;
+}
+
+/* Add hover effect for cards */
+.vertical-timeline-element:hover .vertical-timeline-element-content {
+  box-shadow: 0 0 30px rgba(59, 130, 246, 0.4);
+  transform: translateY(-5px);
+}
+
+/* Smooth transition for all elements */
+.vertical-timeline-element * {
+  transition: all 0.3s ease-out;
+}
+
+/* Responsive adjustments */
+@media only screen and (max-width: 1169px) {
+  .vertical-timeline-element-content {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+  
+  .vertical-timeline::before {
+    left: 18px;
+  }
+  
+  .vertical-timeline-element-content-arrow {
+    top: 15px;
+  }
+}

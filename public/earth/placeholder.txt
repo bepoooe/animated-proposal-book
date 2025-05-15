@@ -1,0 +1,6 @@
+This is a placeholder file to remind you to add Earth textures here:
+1. earthmap.jpg - A color map texture of Earth
+2. earthnormal.jpg - A normal map for Earth's terrain
+3. earthspec.jpg - A specular map for Earth's reflective properties
+
+You'll need to manually download and place these files here for the 3D Earth to render properly.

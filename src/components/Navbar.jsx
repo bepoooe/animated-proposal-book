@@ -1,0 +1,242 @@
+import React, { useEffect, useState } from "react";
+import { motion } from "framer-motion";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faLinkedin, faGithub, faInstagram } from '@fortawesome/free-brands-svg-icons';
+
+import { styles } from "../styles";
+import { navLinks } from "../constants";
+import { menu, close } from "../assets";
+
+const Navbar = () => {
+  const [active, setActive] = useState("");
+  const [toggle, setToggle] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  const socialLinks = [
+    {
+      icon: faGithub,
+      url: "https://github.com/bepoooe",
+      color: "#333"
+    },
+    {
+      icon: faLinkedin,
+      url: "https://www.linkedin.com/in/adrishbasak/",
+      color: "#0077B5"
+    },
+    {
+      icon: faInstagram,
+      url: "https://www.instagram.com/bepoisdying/?hl=en",
+      color: "#E4405F"
+    }
+  ];
+
+  // Handle scroll events to change navbar appearance
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      if (scrollTop > 100) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+      
+      // Find which section is currently in view
+      const sections = document.querySelectorAll('section[id]');
+      let currentSection = '';
+      
+      sections.forEach((section) => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.offsetHeight;
+        
+        if (window.scrollY >= sectionTop - 200 && window.scrollY < sectionTop + sectionHeight - 200) {
+          currentSection = section.getAttribute('id');
+        }
+      });
+      
+      setActive(currentSection);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Scroll to section when nav link is clicked
+  const scrollToSection = (sectionId) => {
+    setToggle(false);
+    const section = document.getElementById(sectionId);
+    if (section) {
+      window.scrollTo({
+        top: section.offsetTop - 100,
+        behavior: 'smooth'
+      });
+    }
+  };
+
+  return (
+    <motion.nav
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.5 }}
+      className={`${styles.paddingX} w-full flex items-center py-5 fixed top-0 z-20 transition-all duration-300 ${scrolled ? "bg-black bg-opacity-70 backdrop-blur-md shadow-[0_4px_15px_rgba(0,0,0,0.5)]" : "bg-transparent"}`}
+    >
+      <div className='w-full flex justify-between items-center max-w-7xl mx-auto'>
+        <motion.div 
+          className="flex items-center justify-between w-full px-8 py-3 rounded-full border border-gray-700 bg-black bg-opacity-60 backdrop-filter backdrop-blur-sm navbar-glow relative overflow-hidden"
+          whileHover={{ boxShadow: "0 0 15px rgba(0, 0, 0, 0.7)" }}
+          transition={{ duration: 0.3 }}
+        >
+          {/* Decorative stars */}
+          <div className="absolute top-1/4 left-[10%] w-1 h-1 bg-white rounded-full opacity-70 star-twinkle"></div>
+          <div className="absolute top-3/4 left-[20%] w-0.5 h-0.5 bg-white rounded-full opacity-50 star-twinkle-slow"></div>
+          <div className="absolute top-1/3 left-[80%] w-1 h-1 bg-white rounded-full opacity-70 star-twinkle" style={{animationDelay: '0.5s'}}></div>
+          <div className="absolute top-2/3 left-[90%] w-0.5 h-0.5 bg-white rounded-full opacity-50 star-twinkle-slow" style={{animationDelay: '1.5s'}}></div>
+          
+          {/* Space dust particles */}
+          <div className="absolute top-1/2 left-1/4 w-[2px] h-[2px] bg-blue-400 rounded-full opacity-30" style={{animation: 'space-dust 8s linear infinite'}}></div>
+          <div className="absolute top-1/3 left-2/3 w-[1px] h-[1px] bg-purple-400 rounded-full opacity-20" style={{animation: 'space-dust 12s linear infinite', animationDelay: '2s'}}></div>
+          {/* Left section - Logo and Name */}
+          <div
+            className='flex items-center gap-2 group cursor-pointer'
+            onClick={() => {
+              setActive("");
+              window.scrollTo(0, 0);
+            }}
+          >
+            <motion.img 
+              src="/favicon.ico" 
+              alt='logo' 
+              className='w-9 h-9 object-contain'
+              whileHover={{ rotate: 360 }}
+              transition={{ duration: 0.5 }}
+            />
+            <p className='text-[18px] font-bold cursor-pointer flex transition-all duration-300'>
+              <span className="text-[#e8e0cf] group-hover:text-[#f0e9db] drop-shadow-[0_0_3px_rgba(232,224,207,0.3)]">Bepo</span> <span className="ml-1"><span className="text-[#e8e0cf] opacity-70 group-hover:opacity-80">|</span> <span className="text-[#e8e0cf] group-hover:text-[#f0e9db] drop-shadow-[0_0_3px_rgba(232,224,207,0.3)]">Portfolio</span></span>
+            </p>
+          </div>
+
+          {/* Right section - Navigation and Social Links */}
+          <div className='hidden sm:flex items-center gap-6'>
+            {/* Navigation Links */}
+            <ul className='list-none flex flex-row gap-6 mr-6'>
+              {navLinks.map((nav) => (
+                <motion.li
+                  key={nav.id}
+                  className={`${active === nav.id ? "text-white" : "text-secondary"} hover:text-white text-[16px] font-medium cursor-pointer transition-all duration-300`}
+                  onClick={() => {
+                    setActive(nav.id);
+                    scrollToSection(nav.id);
+                  }}
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <a href={`#${nav.id}`}>{nav.title}</a>
+                </motion.li>
+              ))}
+            </ul>
+
+            {/* Social Links */}
+            <div className="flex gap-4 border-l border-[#915EFF]/30 pl-6">
+              {socialLinks.map((social, index) => (
+                <motion.a
+                  key={index}
+                  href={social.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ 
+                    scale: 1.2,
+                    rotate: 10,
+                    transition: { duration: 0.3 }
+                  }}
+                  whileTap={{ scale: 0.9 }}
+                  className="text-xl"
+                  style={{ color: social.color }}
+                >
+                  {social.type === 'custom' ? (
+                    <div className="w-4 h-4 flex items-center justify-center relative">
+                      <div className="absolute w-3.5 h-3.5 bg-[#0AB79B] rounded-sm transform rotate-45"></div>
+                      <span className="relative text-xs font-bold text-black">U</span>
+                    </div>
+                  ) : (
+                    <FontAwesomeIcon icon={social.icon} />
+                  )}
+                </motion.a>
+              ))}
+            </div>
+          </div>
+
+          {/* Mobile Menu Button */}
+          <div className='sm:hidden flex items-center'>
+            <motion.img
+              src={toggle ? close : menu}
+              alt='menu'
+              className='w-[28px] h-[28px] object-contain cursor-pointer'
+              onClick={() => setToggle(!toggle)}
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+            />
+          </div>
+        </motion.div>
+
+        {/* Mobile Menu */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: toggle ? 1 : 0, scale: toggle ? 1 : 0.8 }}
+          transition={{ duration: 0.2 }}
+          className={`${!toggle ? "hidden" : "flex"} p-6 bg-black bg-opacity-80 absolute top-20 right-4 mx-4 my-2 min-w-[140px] z-10 rounded-xl backdrop-blur-sm border border-gray-700 shadow-[0_4px_20px_rgba(0,0,0,0.5)] relative overflow-hidden`}
+        >
+          {/* Decorative stars for mobile menu */}
+          <div className="absolute top-1/4 right-[10%] w-1 h-1 bg-white rounded-full opacity-70 star-twinkle"></div>
+          <div className="absolute bottom-1/4 left-[15%] w-0.5 h-0.5 bg-white rounded-full opacity-50 star-twinkle-slow"></div>
+          <div className="absolute top-3/4 right-[20%] w-0.5 h-0.5 bg-white rounded-full opacity-60 star-twinkle" style={{animationDelay: '1s'}}></div>
+          
+          {/* Space dust particles */}
+          <div className="absolute top-1/2 right-1/4 w-[2px] h-[2px] bg-white rounded-full opacity-30" style={{animation: 'space-dust 8s linear infinite'}}></div>
+          <div className='flex flex-col gap-4'>
+            <ul className='list-none flex flex-col gap-4'>
+              {navLinks.map((nav) => (
+                <motion.li
+                  key={nav.id}
+                  className={`font-medium cursor-pointer text-[16px] ${active === nav.id ? "text-white" : "text-secondary"} hover:text-white transition-colors duration-300`}
+                  onClick={() => {
+                    setToggle(!toggle);
+                    setActive(nav.id);
+                    scrollToSection(nav.id);
+                  }}
+                  whileHover={{ x: 5 }}
+                >
+                  <a href={`#${nav.id}`}>{nav.title}</a>
+                </motion.li>
+              ))}
+            </ul>
+            <div className="flex gap-4 pt-4 border-t border-[#915EFF]/30">
+              {socialLinks.map((social, index) => (
+                <motion.a
+                  key={index}
+                  href={social.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.2 }}
+                  whileTap={{ scale: 0.9 }}
+                  className="text-xl"
+                  style={{ color: social.color }}
+                >
+                  {social.type === 'custom' ? (
+                    <div className="w-4 h-4 flex items-center justify-center relative">
+                      <div className="absolute w-3.5 h-3.5 bg-[#0AB79B] rounded-sm transform rotate-45"></div>
+                      <span className="relative text-xs font-bold text-black">U</span>
+                    </div>
+                  ) : (
+                    <FontAwesomeIcon icon={social.icon} />
+                  )}
+                </motion.a>
+              ))}
+            </div>
+          </div>
+        </motion.div>
+      </div>
+    </motion.nav>
+  );
+};
+
+export default Navbar;

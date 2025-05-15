@@ -1,0 +1,10 @@
+This directory needs to contain a 3D model of Earth in GLTF format.
+
+You'll need to place a file named 'scene.gltf' here, along with any associated textures or assets that the model requires.
+
+You can download Earth 3D models from sources like:
+1. https://sketchfab.com/3d-models/earth
+2. https://market.pmnd.rs/
+3. https://www.turbosquid.com/Search/3D-Models/earth/gltf
+
+Make sure to get a model with proper licensing for your usage.

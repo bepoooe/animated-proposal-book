@@ -1,0 +1,10 @@
+This directory needs to contain a 3D model of a computer in GLTF format.
+
+You'll need to place a file named 'scene.gltf' here, along with any associated textures or assets that the model requires.
+
+You can download a computer 3D model from sources like:
+1. https://sketchfab.com/3d-models/categories/electronics/pc
+2. https://www.turbosquid.com/Search/3D-Models/computer/gltf
+3. https://market.pmnd.rs/
+
+Make sure to get a model with proper licensing for your usage.

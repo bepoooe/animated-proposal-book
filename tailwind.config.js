@@ -15,6 +15,7 @@ export default {
       animation: {
         "horizontal-scroll": "horizontal-scroll linear 16s infinite ",
         "horizontal-scroll-2": "horizontal-scroll-2 linear 16s infinite ",
+        "shimmer": "shimmer 2s linear infinite",
       },
       keyframes: {
         "horizontal-scroll": {
@@ -24,6 +25,10 @@ export default {
         "horizontal-scroll-2": {
           from: { transform: "translateX(100%)" },
           to: { transform: "translateX(0)" },
+        },
+        "shimmer": {
+          "0%": { transform: "translateX(-100%)" },
+          "100%": { transform: "translateX(100%)" },
         },
       },
     },

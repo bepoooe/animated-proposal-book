@@ -1,5 +1,5 @@
 import { atom, useAtom } from "jotai";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const pictures = [
   "DSC00680",
@@ -41,41 +41,84 @@ pages.push({
 
 export const UI = () => {
   const [page, setPage] = useAtom(pageAtom);
+  const [showControls, setShowControls] = useState(true);
 
   useEffect(() => {
     const audio = new Audio("/audios/page-flip-01a.mp3");
     audio.play();
   }, [page]);
+  
+  // Handle scroll to hide/show controls
+  useEffect(() => {
+    const handleScroll = () => {
+      const bookSection = document.getElementById('book');
+      if (bookSection) {
+        const bookRect = bookSection.getBoundingClientRect();
+        const isVisible = 
+          bookRect.top < window.innerHeight && 
+          bookRect.bottom > 0;
+        setShowControls(isVisible);
+      }
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    // Initial check
+    handleScroll();
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   return (
     <>
-      <main className="pointer-events-none select-none z-10 fixed inset-0 flex justify-between flex-col">
-        <a className="pointer-events-auto mt-10 ml-10"
-        //href="https://lessons.wawasensei.dev/courses/react-three-fiber" //change to insert link
-        >
-        </a>
-        <div className="w-full overflow-auto pointer-events-auto flex justify-center">
-          <div className="overflow-auto flex items-center gap-4 max-w-full p-10">
-            {[...pages].map((_, index) => (
-              <button
-                key={index}
-                className={`border-transparent hover:border-white transition-all duration-300 px-4 py-3 rounded-full text-lg uppercase shrink-0 border ${
-                  index === page
-                    ? "bg-white/90 text-black"
-                    : "bg-black/30 text-white"
-                }`}
-                onClick={() => setPage(index)}
-              >
-                {index === 0 ? "Cover" : `Page ${index}`}
-              </button>
-            ))}
+      {/* Page navigation controls that show/hide based on scroll position */}
+      <main 
+        className={`pointer-events-none select-none z-20 fixed inset-0 flex justify-between flex-col transition-opacity duration-500 ${
+          showControls ? 'opacity-100' : 'opacity-0 pointer-events-none'
+        }`}
+      >
+        <div className="flex-grow"></div>
+        <div className="w-full overflow-auto pointer-events-auto flex justify-center mb-8">
+          <div className="overflow-auto flex items-center gap-2 max-w-full p-4 bg-black/50 backdrop-blur-sm rounded-xl shadow-xl">
+            {/* First page (Cover) */}
             <button
-              className={`border-transparent hover:border-white transition-all duration-300 px-4 py-3 rounded-full text-lg uppercase shrink-0 border ${
-                page === pages.length
+              className={`border-transparent hover:border-white transition-all duration-300 px-4 py-2 rounded-full text-sm md:text-base uppercase shrink-0 border ${
+                page === 0
                   ? "bg-white/90 text-black"
-                  : "bg-black/30 text-white"
+                  : "bg-black/70 text-white"
               }`}
-              onClick={() => setPage(pages.length)}
+              onClick={() => setPage(0)}
+            >
+              Cover
+            </button>
+            
+            {/* Middle pages */}
+            {pages.slice(1, pages.length - 1).map((_, idx) => {
+              const pageIndex = idx + 1; // Adjust index to account for cover
+              return (
+                <button
+                  key={pageIndex}
+                  className={`border-transparent hover:border-white transition-all duration-300 px-4 py-2 rounded-full text-sm md:text-base uppercase shrink-0 border ${
+                    pageIndex === page
+                      ? "bg-white/90 text-black"
+                      : "bg-black/70 text-white"
+                  }`}
+                  onClick={() => setPage(pageIndex)}
+                >
+                  {`Page ${pageIndex}`}
+                </button>
+              );
+            })}
+            
+            {/* Back cover */}
+            <button
+              className={`border-transparent hover:border-white transition-all duration-300 px-4 py-2 rounded-full text-sm md:text-base uppercase shrink-0 border ${
+                page === pages.length - 1
+                  ? "bg-white/90 text-black"
+                  : "bg-black/70 text-white"
+              }`}
+              onClick={() => setPage(pages.length - 1)}
             >
               Back Cover
             </button>

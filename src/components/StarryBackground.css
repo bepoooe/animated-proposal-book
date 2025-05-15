@@ -1,0 +1,85 @@
+/* Starry Background CSS */
+
+.starry-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+  background: transparent;
+}
+
+.stars {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.star {
+  position: absolute;
+  background-color: #fff;
+  border-radius: 50%;
+  opacity: 0;
+  animation: twinkle var(--duration) ease-in-out infinite;
+  animation-delay: var(--delay);
+}
+
+.star-tiny {
+  width: 0.5px;
+  height: 0.5px;
+  box-shadow: 0 0 0.5px rgba(255, 255, 255, 0.7);
+}
+
+.star-small {
+  width: 0.8px;
+  height: 0.8px;
+  box-shadow: 0 0 0.8px rgba(255, 255, 255, 0.8);
+}
+
+.star-medium {
+  width: 1px;
+  height: 1px;
+  box-shadow: 0 0 1px rgba(255, 255, 255, 0.9);
+}
+
+.star-large {
+  width: 1.2px;
+  height: 1.2px;
+  box-shadow: 0 0 1px rgba(255, 255, 255, 1);
+}
+
+.shooting-star {
+  position: absolute;
+  width: 80px;
+  height: 0.5px;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.5) 50%, rgba(255, 255, 255, 0) 100%);
+  opacity: 0;
+  transform: rotate(var(--angle));
+  animation: shooting var(--duration) ease-out infinite;
+  animation-delay: var(--delay);
+}
+
+/* Keyframes for animations */
+@keyframes twinkle {
+  0% { opacity: 0; }
+  50% { opacity: var(--max-opacity); }
+  100% { opacity: 0; }
+}
+
+@keyframes shooting {
+  0% { 
+    transform: translateX(-200px) translateY(0) rotate(var(--angle));
+    opacity: 0;
+  }
+  10% { opacity: 0.8; }
+  20% { opacity: 0.2; }
+  100% { 
+    transform: translateX(calc(100vw + 200px)) translateY(calc(var(--angle-distance) * 100vw)) rotate(var(--angle));
+    opacity: 0;
+  }
+}
