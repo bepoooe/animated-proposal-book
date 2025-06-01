@@ -1,4 +1,4 @@
-# Animated Memory Book
+# Animated Memory Book 
 
 A 3D interactive memory book built with React and Three.js. This project features an animated book interface that allows users to flip through pages of photographs with smooth animations and transitions, complete with ambient music and page-turning sound effects.
 
